@@ -1,19 +1,14 @@
 <p>books works!</p>
-<button (click)="handleClick()" type="button">
+<!-- <button (click)="handleClick()" type="button">
   <ng-container *ngIf="!isShowing">Show Button</ng-container>
   <ng-container *ngIf="isShowing">Hide Button</ng-container>
-</button>
+</button> -->
 
-<input type="text" [(ngModel)]="myName" />
-<p>{{ myName }}</p>
+<!-- <input type="text" [(ngModel)]="myName" />
+<p>{{ myName }}</p> -->
 
 <ul *ngIf="isShowing">
   <ng-container *ngFor="let item of books">
-    <li>
-      <img [src]="item.src" [alt]="item.name" />
-      <p>{{ item.name | titlecase }}</p>
-      <p>{{ item.author }}</p>
-      <p>{{ item.price | currency: "INR" }}</p>
-    </li>
+    <app-book (bookEmitter)="addtoCart($event)" [book]="item"></app-book>
   </ng-container>
 </ul>
